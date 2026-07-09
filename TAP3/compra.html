@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra de Entradas - Sonidos de la Ciudad</title>
+    
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/estilo_compra.css"
+    
+</head>
+<body>
+    <header class="encabezado-navegacion">
+        <div class="contenedor-menu">
+            <div class="logotipo-festival">
+                <i class="fa-solid fa-guitar"></i> Sonidos de la Ciudad
+            </div>
+            <nav class="enlaces-menu">
+                <a href="index.html" class="enlace-navegacion">Inicio</a>
+                <a href="artistas.html" class="enlace-navegacion">Artistas</a>
+                <a href="cronograma.html" class="enlace-navegacion">Cronograma</a>
+                <a href="compra.html" class="enlace-navegacion" style="background-color: var(--color-acento); border-radius: 4px;">🎫 Comprar</a>
+                <a href="ubicacion.html" class="enlace-navegacion">Ubicación</a>
+                <a href="contacto.html" class="enlace-navegacion">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="seccion-compra">
+        <div class="contenedor-compra">
+            <h1 class="titulo-compra"><i class="fa-solid fa-ticket" style="color: var(--color-acento);"></i> Compra de Entradas</h1>
+            <p class="subtitulo-compra">Completá todos los datos para asegurar tu lugar en el festival.</p>
+            
+            <div class="grid-compra">
+                <!-- Columna Izquierda: Formulario -->
+                <div class="columna-formulario">
+                    <form id="formCompra" novalidate>
+                        <!-- Datos del Comprador -->
+                        <div style="background-color: #f8fafc; padding: 1rem; border-radius: 8px; border: 1px solid #e5e7eb;">
+                            <h3 style="font-family: var(--fuente-titulos); color: var(--color-primario); margin-bottom: 1rem;">
+                                <i class="fa-solid fa-user" style="color: var(--color-secundario);"></i> Datos del Comprador
+                            </h3>
+                            
+                            <div class="campo-grupo">
+                                <label for="nombre">Nombre Completo <span class="requerido">*</span></label>
+                                <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required>
+                            </div>
+                            
+                            <div class="campo-grupo">
+                                <label for="email">Correo Electrónico <span class="requerido">*</span></label>
+                                <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+                            </div>
+                            
+                            <div class="campo-grupo">
+                                <label for="telefono">Número de Teléfono <span class="requerido">*</span></label>
+                                <input type="tel" id="telefono" name="telefono" placeholder="3811234567" maxlength="10" required>
+                                <span class="ayuda">10 dígitos numéricos, sin espacios ni guiones.</span>
+                            </div>
+                            
+                            <div class="campo-grupo">
+                                <label for="fechaNacimiento">Fecha de Nacimiento <span class="requerido">*</span></label>
+                                <input type="text" id="fechaNacimiento" name="fechaNacimiento" placeholder="dd/mm/yyyy" required>
+                                <span class="ayuda">Debes ser mayor de 18 años. Formato: día/mes/año.</span>
+                            </div>
+                            
+                            <div class="campo-grupo">
+                                <label for="pais">País de Residencia <span class="requerido">*</span></label>
+                                <select id="pais" name="pais" required>
+                                    <option value="">Seleccionar país...</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Datos del Evento -->
+                        <div style="background-color: #f8fafc; padding: 1rem; border-radius: 8px; border: 1px solid #e5e7eb;">
+                            <h3 style="font-family: var(--fuente-titulos); color: var(--color-primario); margin-bottom: 1rem;">
+                                <i class="fa-solid fa-music" style="color: var(--color-secundario);"></i> Datos del Evento
+                            </h3>
+                            
+                            <div class="campo-grupo">
+                                <label for="evento">Selección del Evento <span class="requerido">*</span></label>
+                                <select id="evento" name="evento" required>
+                                    <option value="">Cargando eventos...</option>
+                                </select>
+                            </div>
+                            
+                            <div class="campo-grupo">
+                                <label>Descripción del Evento</label>
+                                <div class="campo-lectura" id="eventoDescripcion">Seleccione un evento para ver la descripción.</div>
+                            </div>
+                            
+                            <div class="campo-grupo">
+                                <label>Fecha del Evento</label>
+                                <div class="campo-lectura" id="eventoFecha">-</div>
+                            </div>
+                            
+                            <div class="campo-grupo">
+                                <label>Ubicación del Evento</label>
+                                <div class="campo-lectura" id="eventoUbicacion">-</div>
+                            </div>
+                            
+                            <div class="campo-grupo">
+                                <label for="tipoEntrada">Tipo de Entrada <span class="requerido">*</span></label>
+                                <select id="tipoEntrada" name="tipoEntrada" required>
+                                    <option value="General">General - $5.000</option>
+                                    <option value="VIP">VIP - $12.000</option>
+                                    <option value="Palco">Palco - $20.000</option>
+                                </select>
+                            </div>
+                            
+                            <div class="campo-grupo">
+                                <label for="cantidad">Cantidad de Entradas <span class="requerido">*</span></label>
+                                <input type="number" id="cantidad" name="cantidad" min="1" max="6" value="1" required>
+                                <span class="ayuda">Mínimo 1, máximo 6 entradas por compra.</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Datos de Pago -->
+                        <div style="background-color: #f8fafc; padding: 1rem; border-radius: 8px; border: 1px solid #e5e7eb;">
+                            <h3 style="font-family: var(--fuente-titulos); color: var(--color-primario); margin-bottom: 1rem;">
+                                <i class="fa-solid fa-credit-card" style="color: var(--color-secundario);"></i> Datos de Pago
+                            </h3>
+                            
+                            <div class="campo-grupo">
+                                <label for="tarjeta">Número de Tarjeta <span class="requerido">*</span></label>
+                                <input type="text" id="tarjeta" name="tarjeta" placeholder="4111 1111 1111 1111" maxlength="19" required>
+                                <span class="ayuda">Visa (comienza con 4), MasterCard (51-55), American Express (34 o 37).</span>
+                                <div id="logoTarjeta" class="logo-tarjeta"></div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div class="campo-grupo">
+                                    <label for="vencimiento">Fecha de Vencimiento <span class="requerido">*</span></label>
+                                    <input type="text" id="vencimiento" name="vencimiento" placeholder="MM/AA" maxlength="5" required>
+                                </div>
+                                <div class="campo-grupo">
+                                    <label for="cvv">CVV <span class="requerido">*</span></label>
+                                    <input type="password" id="cvv" name="cvv" placeholder="123" maxlength="4" required>
+                                    <span class="ayuda">3 dígitos (Visa/MC) o 4 dígitos (AmEx).</span>
+                                </div>
+                            </div>
+                            
+                            <div class="campo-grupo">
+                                <label for="nombreTarjeta">Nombre en la Tarjeta <span class="requerido">*</span></label>
+                                <input type="text" id="nombreTarjeta" name="nombreTarjeta" placeholder="Como aparece en la tarjeta" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Columna Derecha: Resumen y Total -->
+                <div class="columna-resumen">
+                    <h3><i class="fa-solid fa-receipt" style="color: var(--color-secundario);"></i> Resumen de Compra</h3>
+                    
+                    <div class="contador-tiempo">
+                        <i class="fa-solid fa-hourglass-half"></i>
+                        <span>Tiempo restante:</span>
+                        <span class="numero" id="contadorTiempo">05:00</span>
+                    </div>
+                    
+                    <div class="precio-total">
+                        Total: <span id="precioTotal">$0</span>
+                    </div>
+                    
+                    <div id="resumenCompra">
+                        <p class="resumen-vacio">Seleccione un evento y cantidad para ver el resumen.</p>
+                    </div>
+                    
+                    <div id="mensajeEstado" class="mensaje-estado info">
+                        ⏳ Complete todos los campos para habilitar la compra.
+                    </div>
+                    
+                    <button type="submit" form="formCompra" id="btnSubmit" class="boton-confirmar" disabled>
+                        <i class="fa-solid fa-lock"></i> Confirmar Compra
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="pie-pagina">
+        <p>&copy; 2026 Sonidos de la Ciudad. Todos los derechos reservados.</p>
+        <div class="redes-sociales">
+            <a href="#" class="enlace-red"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="enlace-red"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+    </footer>
+
+    <script src="js/compra.js"></script>
+    <script src="js/paises.js"></script>
+</body>
+</html>

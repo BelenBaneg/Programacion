@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonidos de la Ciudad - Festival de Música Local</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+    <header class="encabezado-navegacion">
+        <div class="contenedor-menu">
+            <div class="logotipo-festival">
+                <i class="fa-solid fa-guitar"></i> Sonidos de la Ciudad
+            </div>
+            <nav class="enlaces-menu">
+                <a href="#inicio" class="enlace-navegacion">Inicio</a>
+                <a href="#artistas" class="enlace-navegacion">Artistas</a>
+                <a href="#entradas" class="enlace-navegacion">Entradas</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio" class="seccion-bienvenida">
+        <div class="bloque-presentacion">
+            <h1 class="titulo-principal">El Festival de Música Más Grande de la Región</h1>
+            <p class="subtitulo-festival">Disfruta del arte local en un entorno único e inolvidable.</p>
+            <a href="#entradas" class="boton-accion">Adquirir Entradas <i class="fa-solid fa-ticket"></i></a>
+        </div>
+    </section>
+
+    <div class="contenedor-principal">
+        
+        <main id="artistas" class="contenido-artistas">
+            <h2 class="titulo-seccion">Line-Up Oficial</h2>
+            <div class="cuadrícula-artistas">
+                
+                <div class="tarjeta-artista">
+                    <div class="contenedor-imagen-artista">
+                        <img src="img/tambores.jpg" alt="Los Tambores del Estero en vivo" class="imagen-artista">
+                    </div>
+                    <h3>Los Tambores del Estero</h3>
+                    <p>Ritmos autóctonos fusionados con géneros contemporáneos.</p>
+                </div>
+                
+                <div class="tarjeta-artista">
+                    <div class="contenedor-imagen-artista">
+                        <img src="img/images.jfif" alt="Eco Urbano en concierto" class="imagen-artista">
+                    </div>
+                    <h3>Eco Urbano</h3>
+                    <p>La voz de las calles plasmada en melodías acústicas y potentes.</p>
+                </div>
+
+            </div>
+        </main>
+
+        <aside class="barra-lateral">
+            <h3 class="titulo-lateral">Información del Evento</h3>
+            <ul class="lista-detalles">
+                <li><i class="fa-solid fa-calendar-days"></i> 14 y 15 de Noviembre</li>
+                <li><i class="fa-solid fa-location-dot"></i> Plaza de la Música</li>
+                <li><i class="fa-solid fa-clock"></i> Apertura: 18:00 hs</li>
+            </ul>
+        </aside>
+
+    </div>
+
+    <section id="entradas" class="seccion-formulario">
+        <div class="contenedor-formulario">
+            <h2 class="titulo-formulario">Reserva tu Lugar</h2>
+            <p class="descripcion-formulario">Completa los campos para recibir las novedades y accesos preferenciales.</p>
+            
+            <form action="#" method="POST" class="formulario-registro">
+                <div class="campo-grupo">
+                    <label for="nombre-completo">Nombre Completo:</label>
+                    <input type="text" id="nombre-completo" name="nombre" placeholder="Ej: Jorgelina Campos" required>
+                </div>
+                
+                <div class="campo-grupo">
+                    <label for="correo-electronico">Correo Electrónico:</label>
+                    <input type="email" id="correo-electronico" name="correo" placeholder="ejemplo@correo.com" required>
+                </div>
+                
+                <div class="campo-grupo">
+                    <label for="cantidad-tickets">Cantidad de Entradas:</label>
+                    <input type="number" id="cantidad-tickets" name="cantidad" min="1" max="4" value="1" required>
+                </div>
+                
+                <button type="submit" class="boton-enviar">Confirmar Reserva</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="pie-pagina">
+        <p>&copy; 2026 Sonidos de la Ciudad. Todos los derechos reservados.</p>
+        <div class="redes-sociales">
+            <a href="#" class="enlace-red"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="enlace-red"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+    </footer>
+
+</body>
+</html>

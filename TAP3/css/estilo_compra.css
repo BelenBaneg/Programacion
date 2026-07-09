@@ -1,0 +1,302 @@
+.seccion-compra {
+    padding: 3rem 1.5rem;
+    background-color: var(--color-fondo-claro);
+}
+
+.contenedor-compra {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--color-texto-claro);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.titulo-compra {
+    font-family: var(--fuente-titulos);
+    font-size: 2rem;
+    color: var(--color-primario);
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.subtitulo-compra {
+    text-align: center;
+    color: #6b7280;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.grid-compra {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .grid-compra {
+grid-template-columns: 1fr;
+    }
+}
+
+.columna-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.columna-resumen {
+    background-color: #f8fafc;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #e5e7eb;
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+.columna-resumen h3 {
+    font-family: var(--fuente-titulos);
+    margin-bottom: 1rem;
+    color: var(--color-primario);
+    border-bottom: 2px solid var(--color-secundario);
+    padding-bottom: 0.5rem;
+}
+
+.campo-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.campo-grupo label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-texto-oscuro);
+}
+
+.campo-grupo label .requerido {
+    color: var(--color-acento);
+}
+
+.campo-grupo input,
+.campo-grupo select {
+    padding: 0.6rem 0.8rem;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: var(--fuente-cuerpo);
+}
+
+.campo-grupo input:focus,
+.campo-grupo select:focus {
+    outline: none;
+    border-color: var(--color-secundario);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+.campo-grupo input.valido {
+    border-color: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+}
+
+.campo-grupo input.invalido {
+    border-color: #f43f5e;
+    box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.2);
+}
+
+.campo-grupo select.valido {
+    border-color: #22c55e;
+}
+
+.campo-grupo select.invalido {
+    border-color: #f43f5e;
+}
+
+.campo-grupo input[readonly] {
+    background-color: #f3f4f6;
+    cursor: default;
+}
+
+.mensaje-validacion {
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+}
+
+.mensaje-validacion.error {
+    color: #f43f5e;
+}
+
+.mensaje-validacion.exito {
+    color: #22c55e;
+}
+
+.campo-lectura {
+    background-color: #f3f4f6;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    font-size: 0.95rem;
+    color: var(--color-texto-oscuro);
+    min-height: 3rem;
+}
+
+.campo-lectura p {
+    margin: 0.2rem 0;
+}
+
+.campo-lectura .etiqueta {
+    font-weight: 600;
+    color: var(--color-primario);
+}
+
+.precio-total {
+    font-family: var(--fuente-titulos);
+    font-size: 1.8rem;
+    color: var(--color-secundario);
+    text-align: center;
+    padding: 0.5rem;
+    background-color: #e0e7ff;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+}
+
+.resumen-item {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 0.95rem;
+}
+
+.resumen-item.total {
+    border-bottom: none;
+    font-size: 1.1rem;
+    padding-top: 0.8rem;
+    margin-top: 0.5rem;
+    border-top: 2px solid var(--color-secundario);
+    color: var(--color-primario);
+}
+
+.resumen-vacio {
+    color: #9ca3af;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.mensaje-estado {
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin: 0.5rem 0;
+}
+
+.mensaje-estado.error {
+    background-color: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+.mensaje-estado.exito {
+    background-color: #dcfce7;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+}
+
+.mensaje-estado.info {
+    background-color: #dbeafe;
+    color: #2563eb;
+    border: 1px solid #bfdbfe;
+}
+
+.boton-confirmar {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--color-secundario), #7c3aed);
+    color: var(--color-texto-claro);
+    border: none;
+    border-radius: 8px;
+    font-family: var(--fuente-titulos);
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 0.5rem;
+}
+
+.boton-confirmar:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
+}
+
+.boton-confirmar:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.contador-tiempo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--fuente-titulos);
+    font-size: 1.2rem;
+    color: var(--color-primario);
+    padding: 0.5rem;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+}
+
+.contador-tiempo .numero {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-secundario);
+}
+
+.logo-tarjeta {
+    display: none;
+    text-align: center;
+    padding: 0.3rem;
+    margin-top: 0.2rem;
+}
+
+.confirmacion-compra {
+    text-align: center;
+    padding: 1rem;
+}
+
+.confirmacion-compra h3 {
+    font-family: var(--fuente-titulos);
+    color: var(--color-primario);
+    margin: 0.5rem 0;
+}
+
+.confirmacion-compra p {
+    margin: 0.3rem 0;
+}
+
+.campo-grupo .ayuda {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+@media (max-width: 600px) {
+    .contenedor-compra {
+padding: 1.5rem;
+    }
+    
+    .titulo-compra {
+font-size: 1.5rem;
+    }
+    
+    .precio-total {
+font-size: 1.4rem;
+    }
+    
+    .columna-resumen {
+position: static;
+    }
+}
