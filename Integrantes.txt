@@ -7,3 +7,7 @@ Ortiz Milagros
 Pavon Fabrizzio
 
 https://belenbaneg.github.io/Programacion/TAP3/index.html
+
+Campos y Maguna tomaron un rol activo en la maquetacion del index.html, el navbar y el css para toda la app.
+Banegas y Ortiz resolvieron la estructura de html de compras, validaciones y backend del consumo de los JSON, y la recuperacion de la info del lado del front.
+Pavon no participo. 
