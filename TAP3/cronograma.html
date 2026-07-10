@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonidos de la Ciudad - Cronograma</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header class="encabezado-navegacion">
+        <div class="contenedor-menu">
+            <div class="logotipo-festival">
+                <i class="fa-solid fa-guitar"></i> Sonidos de la Ciudad
+            </div>
+            <nav class="enlaces-menu">
+                <a href="index.html" class="enlace-navegacion">Inicio</a>
+                <a href="index.html" class="enlace-navegacion">Artistas</a>
+                <a href="cronograma.html" class="enlace-navegacion activo">Cronograma</a>
+                <a href="compra.html" class="enlace-navegacion" style="background-color: var(--color-acento); border-radius: 4px;">🎫 Comprar</a>
+                <a href="#contacto" class="enlace-navegacion">Ubicación</a>
+                <a href="#contacto" class="enlace-navegacion">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio" class="seccion-bienvenida">
+        <div class="bloque-presentacion">
+            <h1 class="titulo-principal">Cronograma del Festival</h1>
+            <p class="subtitulo-festival">Organizá tus días para no perderte a ninguno de tus artistas favoritos.</p>
+            <a href="compra.html" class="boton-accion">Adquirir Entradas <i class="fa-solid fa-ticket"></i></a>
+        </div>
+    </section>
+
+    <div class="contenedor-principal">
+        
+        <main id="eventos" class="contenido-artistas">
+            <section class="seccion-artistas">
+                <h2 class="titulo-seccion">Horarios Ordenados por Día</h2>
+                
+                <!-- Aquí el JS inyectará la lista ordenada de eventos -->
+                <div id="contenedor-cronograma">
+                    <p>⏳ Cargando los horarios del festival...</p>
+                </div>
+            </section>
+        </main>
+
+        <aside class="barra-lateral">
+            <h3 class="titulo-lateral">Información del Evento</h3>
+            <ul class="lista-detalles">
+                <li><i class="fa-solid fa-calendar-days"></i> 14, 15 y 16 de Noviembre</li>
+                <li><i class="fa-solid fa-location-dot"></i> Estadio Madre de Ciudades - Santiago del Estero</li>
+                <li><i class="fa-solid fa-clock"></i> Apertura: 19:30 hs</li>
+            </ul>
+        </aside>
+
+    </div>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="seccion-formulario">
+        <div class="contenedor-principal" style="display: block; margin-top: 0;"> 
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 class="titulo-seccion" style="border: none; margin-bottom: 0.5rem;">Contacto</h2>
+                <p class="descripcion-formulario" style="font-size: 1.1rem;">Encuéntranos en la Boleteria del Estadio Unico o escríbenos para más información.</p>
+            </div>
+
+            <div class="layout-contacto-magico">
+                <div class="caja-texto-contacto">
+                    <h3 style="color: var(--color-secundario); font-size: 1.5rem; margin-bottom: 1rem;">Estadio Unico</h3>
+                    <ul class="lista-detalles" style="padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong>Dirección:</strong> Av. Belgrano, G4200 Santiago del Estero</li>
+                        <li style="margin-bottom: 1rem;"><strong>Email:</strong> info@estadiounico.com</li>
+                        <li style="margin-bottom: 1rem;"><strong>Teléfono:</strong> +54 385 000-0000</li>
+                    </ul>
+                </div>
+                <div class="caja-mapa-contacto">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3530.422485023004!2d-64.27354362473214!3d-27.765953576149094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x943b538809306767%3A0x6a147f14e2f77597!2sEstadio%20%C3%9Anico%20Madre%20de%20Ciudades.!5e0!3m2!1ses-419!2sar!4v1783708932775!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="pie-pagina">
+        <p>© 2026 Sonidos de la Ciudad. Todos los derechos reservados.</p>
+        <div class="redes-sociales">
+            <a href="#" class="enlace-red"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="enlace-red"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+    </footer>
+
+    <!-- Script exclusivo para procesar el orden del cronograma -->
+    <script src="js/cronograma.js"></script>
+</body>
+</html>

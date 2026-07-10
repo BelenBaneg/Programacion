@@ -8,7 +8,7 @@
     --fuente-titulos: 'Montserrat', sans-serif;
     --fuente-cuerpo: 'Open Sans', sans-serif;
     
-    /* Paleta Armoniosa Elegida (Referencia: Color Hunt) */
+
     --color-primario: #111827;     /* Azul oscuro profundo */
     --color-secundario: #4f46e5;   /* Índigo / Violeta vibrante */
     --color-acento: #f43f5e;       /* Rosado fucsia festivalero */
@@ -18,14 +18,14 @@
 }
 
 html {
-    font-size: 16px; /* Definición base para rem */
+    font-size: 16px; 
     font-family: var(--fuente-cuerpo);
     scroll-behavior: smooth;
     background-color: var(--color-fondo-claro);
     color: var(--color-texto-oscuro);
 }
 
-/* menu animado*/
+
 .encabezado-navegacion {
     position: -webkit-sticky;
     position: sticky;
@@ -62,7 +62,7 @@ html {
     gap: 1.5rem;
 }
 
-/* Transición 1: Enlaces del Menú */
+
 .enlace-navegacion {
     font-family: var(--fuente-titulos);
     color: var(--color-texto-claro);
@@ -74,15 +74,12 @@ html {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Pseudoclase 1: Hover en el menú */
+
 .enlace-navegacion:hover {
     background-color: var(--color-secundario);
     color: var(--color-texto-claro);
 }
 
-
-
-/* Bloque Hero de Bienvenida */
 .seccion-bienvenida {
     background-color: var(--color-primario);
     min-height: 60vh;
@@ -107,7 +104,7 @@ html {
     margin-bottom: 2rem;
 }
 
-/* Componente Botón con Transición 2 y Transformación 1 */
+
 .boton-accion {
     display: inline-block;
     font-family: var(--fuente-titulos);
@@ -147,7 +144,7 @@ html {
     padding-bottom: 0.5rem;
 }
 
-/* Pseudoelemento 1: Resalta el inicio de las descripciones */
+
 .cuadrícula-artistas h3 + p::first-letter {
     font-size: 1.3em;
     font-weight: bold;
@@ -159,7 +156,7 @@ html {
     gap: 2rem;
 }
 
-/* Tarjeta con Transición 3 y Transformación 2 */
+
 .tarjeta-artista {
     background-color: var(--color-texto-claro);
     border: 1px solid #e5e7eb;
@@ -190,7 +187,7 @@ html {
     color: #9ca3af;
 }
 
-/* Barra Lateral (Aside) */
+
 .barra-lateral {
     flex: 1;
     background-color: var(--color-texto-claro);
@@ -267,7 +264,7 @@ html {
     font-size: 1rem;
 }
 
-/*  Rotación sutil del botón al enviar */
+
 .boton-enviar {
     width: 100%;
     background-color: var(--color-secundario);
@@ -286,7 +283,6 @@ html {
     transform: rotate(0.5deg); 
 }
 
-/* Pie de Página */
 .pie-pagina {
     background-color: var(--color-primario);
     color: var(--color-texto-claro);
@@ -313,7 +309,7 @@ html {
 
 /* MEDIA QUERIES */
 
-/*TABLETS (Ancho máximo 992px) */
+
 @media (max-width: 992px) {
     .titulo-principal {
         font-size: 2.5rem;
@@ -331,7 +327,7 @@ html {
     }
 }
 
-/* DISPOSITIVOS MÓVILES (Ancho máximo 600px) */
+
 @media (max-width: 600px) {
     html {
         font-size: 14px; 
@@ -350,7 +346,7 @@ html {
         flex-direction: column; 
     }
     
-    /* Ocultamos la barra lateral en celulares*/
+    
     .barra-lateral {
         display: none;
     }
@@ -362,108 +358,95 @@ html {
     }
 }
 
-/* Regla en español para adaptar las imágenes de los artistas */
+
 .imagen-artista {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ajusta la imagen al contenedor de 150px sin deformarse */
+    object-fit: cover; 
     border-radius: 8px;
 }
 
-/* =============================================
-   ESTILOS PARA LA PÁGINA DE COMPRA (TAP3)
-   ============================================= */
 
-/* Estilos para el menú activo */
-.enlace-navegacion.activo {
-    background-color: var(--color-acento);
-    border-radius: 4px;
+.layout-contacto-magico {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 3rem;
+    align-items: center; 
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-/* Estilos para el scroll suave en toda la página */
-html {
-    scroll-behavior: smooth;
+.caja-texto-contacto {
+    flex: 1; 
+    min-width: 300px; 
 }
 
-/* Estilos para los mensajes de validación en otras páginas */
-.campo-grupo .mensaje-validacion {
-    font-size: 0.8rem;
-    margin-top: 0.2rem;
+.caja-mapa-contacto {
+    flex: 1.2; 
+    min-width: 300px;
+    width: 100%;
 }
 
-.campo-grupo .mensaje-validacion.error {
-    color: var(--color-acento);
+.caja-mapa-contacto iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.campo-grupo .mensaje-validacion.exito {
-    color: #22c55e;
+
+.cuadrícula-artistas {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important; 
+    gap: 20px !important; 
+    width: 100% !important;
 }
 
-/* Estilos para campos de solo lectura en compra */
-.campo-lectura {
-    background-color: #f3f4f6;
-    padding: 0.6rem 0.8rem;
+
+.tarjeta-artista {
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+
+.contenedor-imagen-artista {
+    width: 100%;
+    height: 200px; 
+    overflow: hidden;
     border-radius: 8px;
-    border: 1px solid #e5e7eb;
+    margin-bottom: 15px;
+}
+
+.imagen-artista {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+
+.tarjeta-artista h3 {
+    margin: 5px 0 10px 0;
+    font-size: 1.3rem;
+    color: #1f2937;
+}
+
+.tarjeta-artista p {
     font-size: 0.95rem;
-    color: var(--color-texto-oscuro);
-    min-height: 2.8rem;
+    color: #4b5563;
+    line-height: 1.4;
+    margin: 0;
 }
 
-/* Animación de pulso para el contador cuando queda poco tiempo */
-@keyframes pulse-rojo {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-}
 
-.contador-urgente {
-    animation: pulse-rojo 1s ease-in-out infinite;
-}
-
-/* Estilos para el logo de tarjeta en tiempo real */
-.logo-tarjeta {
-    display: none;
-    text-align: center;
-    padding: 0.3rem;
-    margin-top: 0.2rem;
-}
-
-.logo-tarjeta i {
-    font-size: 2.5rem;
-}
-
-/* Estilos de confirmación de compra */
-.confirmacion-compra {
-    text-align: center;
-    padding: 1rem;
-}
-
-.confirmacion-compra h3 {
-    font-family: var(--fuente-titulos);
-    color: var(--color-primario);
-    margin: 0.5rem 0;
-}
-
-.confirmacion-compra p {
-    margin: 0.3rem 0;
-}
-
-.confirmacion-compra.error {
-    color: var(--color-acento);
-}
-
-/* Transición suave para el botón de confirmar */
-.boton-confirmar {
-    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.3s ease;
-}
-
-.boton-confirmar:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
-}
-
-.boton-confirmar:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
+@media (max-width: 768px) {
+    .cuadrícula-artistas {
+        grid-template-columns: 1fr !important;
+    }
 }

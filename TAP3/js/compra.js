@@ -42,52 +42,61 @@ document.addEventListener('DOMContentLoaded', function() {
     const contadorTiempo = document.getElementById('contadorTiempo');
     
 // =============================================
-// 3. CARGA DE PAÍSES (desde paises.js)
+// 3. CARGA DE PAÍSES (Desde GitHub Gist)
 // =============================================
 
 function cargarPaises() {
-    console.log('🔄 Cargando países desde paises.js...');
+    console.log('🔄 Cargando países desde la nube...');
+    const urlPaises = 'https://gist.githubusercontent.com/eduardolat/b2a252d17b17363fab0974bb0634d259/raw/f96ed93dd28fbaf00c4c22fe634ef646a05923e3/countries.json';
     
-    // Verificar que la variable global existe
-    if (typeof paisesData !== 'undefined' && Array.isArray(paisesData) && paisesData.length > 0) {
-        console.log(`✅ Países cargados: ${paisesData.length} países`);
-        
-        // Ordenar alfabéticamente por nombre en español
-        paisesData.sort((a, b) => a.nameES.localeCompare(b.nameES));
-        
-        llenarSelectPaises(paisesData);
-    } else {
-        console.error('❌ No se encontró la variable paisesData');
-        // Fallback con países comunes
-        const fallback = [
-            { nameES: 'Argentina', iso2: 'AR' },
-            { nameES: 'Bolivia', iso2: 'BO' },
-            { nameES: 'Brasil', iso2: 'BR' },
-            { nameES: 'Chile', iso2: 'CL' },
-            { nameES: 'Colombia', iso2: 'CO' },
-            { nameES: 'Costa Rica', iso2: 'CR' },
-            { nameES: 'Cuba', iso2: 'CU' },
-            { nameES: 'Ecuador', iso2: 'EC' },
-            { nameES: 'El Salvador', iso2: 'SV' },
-            { nameES: 'España', iso2: 'ES' },
-            { nameES: 'Estados Unidos', iso2: 'US' },
-            { nameES: 'Guatemala', iso2: 'GT' },
-            { nameES: 'Honduras', iso2: 'HN' },
-            { nameES: 'México', iso2: 'MX' },
-            { nameES: 'Nicaragua', iso2: 'NI' },
-            { nameES: 'Panamá', iso2: 'PA' },
-            { nameES: 'Paraguay', iso2: 'PY' },
-            { nameES: 'Perú', iso2: 'PE' },
-            { nameES: 'Uruguay', iso2: 'UY' },
-            { nameES: 'Venezuela', iso2: 'VE' }
-        ];
-        fallback.sort((a, b) => a.nameES.localeCompare(b.nameES));
-        llenarSelectPaises(fallback);
-    }
+    fetch(urlPaises)
+        .then(response => {
+            if (!response.ok) throw new Error('No se pudo cargar la lista de países');
+            return response.json();
+        })
+        .then(data => {
+            paises = data;
+            
+            // Ordenar alfabéticamente por nombre en español (clave 'name_es')
+            paises.sort((a, b) => {
+                const nombreA = a.name_es || a.name || '';
+                const nombreB = b.name_es || b.name || '';
+                return nombreA.localeCompare(nombreB);
+            });
+            
+            llenarSelectPaises(paises);
+        })
+        .catch(error => {
+            console.error('Falló la carga de países desde la nube, usando Plan B:', error);
+            // Fallback local con países más comunes de Latinoamérica y España
+            const fallback = [
+                { nameES: 'Argentina', iso2: 'AR' },
+                { nameES: 'Bolivia', iso2: 'BO' },
+                { nameES: 'Brasil', iso2: 'BR' },
+                { nameES: 'Chile', iso2: 'CL' },
+                { nameES: 'Colombia', iso2: 'CO' },
+                { nameES: 'Costa Rica', iso2: 'CR' },
+                { nameES: 'Cuba', iso2: 'CU' },
+                { nameES: 'Ecuador', iso2: 'EC' },
+                { nameES: 'El Salvador', iso2: 'SV' },
+                { nameES: 'España', iso2: 'ES' },
+                { nameES: 'Estados Unidos', iso2: 'US' },
+                { nameES: 'Guatemala', iso2: 'GT' },
+                { nameES: 'Honduras', iso2: 'HN' },
+                { nameES: 'México', iso2: 'MX' },
+                { nameES: 'Nicaragua', iso2: 'NI' },
+                { nameES: 'Panamá', iso2: 'PA' },
+                { nameES: 'Paraguay', iso2: 'PY' },
+                { nameES: 'Perú', iso2: 'PE' },
+                { nameES: 'Uruguay', iso2: 'UY' },
+                { nameES: 'Venezuela', iso2: 'VE' }
+            ];
+            fallback.sort((a, b) => a.nameES.localeCompare(b.nameES));
+            llenarSelectPaises(fallback);
+        });
 }
 
 function llenarSelectPaises(listaPaises) {
-    // Limpiar el select manteniendo la opción por defecto
     selectPais.innerHTML = '<option value="">Seleccionar país...</option>';
     
     if (!listaPaises || listaPaises.length === 0) {
@@ -97,39 +106,44 @@ function llenarSelectPaises(listaPaises) {
     
     listaPaises.forEach(pais => {
         const option = document.createElement('option');
-        option.value = pais.iso2 || pais.codigo || '';
-        option.textContent = pais.nameES || pais.nombre || 'País desconocido';
+       
+        option.value = pais.code || pais.iso2 || pais.codigo || '';
+        option.textContent = pais.name_es || pais.nameES || pais.nombre || pais.name || 'País desconocido';
         selectPais.appendChild(option);
     });
     
     console.log(`✅ Select de países poblado con ${listaPaises.length} opciones`);
 }
-    // =============================================
-    // 4. CARGA DE EVENTOS
+
+// =============================================
+    // 4. CARGA DE EVENTOS (Desde GitHub)
     // =============================================
     
     function cargarEventos() {
-        // Cargar desde el archivo JSON local
-        fetch('js/eventos.json')
-            .then(response => response.json())
+        const urlEventos = 'https://raw.githubusercontent.com/BelenBaneg/Programacion/refs/heads/main/TAP3/js/eventos.js';
+        
+        fetch(urlEventos)
+            .then(response => {
+                if (!response.ok) throw new Error('No se encontró el archivo de eventos en la nube');
+                return response.json();
+            })
             .then(data => {
                 eventos = data;
-                // Llenar el select de eventos
+           
                 eventos.forEach((evento, index) => {
                     const option = document.createElement('option');
                     option.value = index;
                     option.textContent = `${evento.evento} - ${formatearFecha(evento.fecha)}`;
                     selectEvento.appendChild(option);
                 });
-                // Seleccionar el primer evento por defecto
                 if (eventos.length > 0) {
                     selectEvento.value = 0;
                     actualizarInfoEvento(0);
                 }
             })
             .catch(error => {
-                console.error('Error al cargar eventos:', error);
-                // Eventos de ejemplo en caso de error
+                console.error('Error al cargar eventos desde la nube, usando Plan B:', error);
+               
                 eventos = [
                     {
                         "evento": "Concierto de Rock",
@@ -174,9 +188,13 @@ function llenarSelectPaises(listaPaises) {
     // =============================================
     
     function formatearFecha(fechaStr) {
-        const fecha = new Date(fechaStr);
+       
+        const fecha = new Date(fechaStr + 'T00:00:00');
         const dias = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
         const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+        
+        if (isNaN(fecha.getTime())) return fechaStr;
+        
         return `${dias[fecha.getDay()]} ${fecha.getDate()} de ${meses[fecha.getMonth()]} de ${fecha.getFullYear()}`;
     }
     
@@ -185,26 +203,36 @@ function llenarSelectPaises(listaPaises) {
         return `${fecha.getDate()}/${fecha.getMonth()+1}/${fecha.getFullYear()}`;
     }
     
-    function esMayorDeEdad(fechaStr) {
-        const fechaNac = new Date(fechaStr);
-        const hoy = new Date();
-        let edad = hoy.getFullYear() - fechaNac.getFullYear();
-        const mes = hoy.getMonth() - fechaNac.getMonth();
-        if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNac.getDate())) {
-            edad--;
-        }
-        return edad >= 18;
+
+function esFechaValida(fechaStr) {
+  
+    const regex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!regex.test(fechaStr)) return false;
+    
+   
+    const fecha = new Date(fechaStr + 'T00:00:00');
+    return !isNaN(fecha.getTime());
+}
+
+function esMayorDeEdad(fechaStr) {
+
+    const partes = fechaStr.split('-');
+    const anio = parseInt(partes[0], 10);
+    const mes = parseInt(partes[1], 10) - 1; // Los meses en JS van de 0 a 11
+    const dia = parseInt(partes[2], 10);
+    
+    const fechaNac = new Date(anio, mes, dia);
+    const hoy = new Date();
+    
+    let edad = hoy.getFullYear() - fechaNac.getFullYear();
+    const diferenciaMes = hoy.getMonth() - fechaNac.getMonth();
+    
+    if (diferenciaMes < 0 || (diferenciaMes === 0 && hoy.getDate() < fechaNac.getDate())) {
+        edad--;
     }
     
-    function esFechaValida(fechaStr) {
-        const regex = /^(\d{2})\/(\d{2})\/(\d{4})$/;
-        if (!regex.test(fechaStr)) return false;
-        const [, dia, mes, anio] = fechaStr.match(regex);
-        const fecha = new Date(parseInt(anio), parseInt(mes) - 1, parseInt(dia));
-        return fecha.getFullYear() === parseInt(anio) &&
-               fecha.getMonth() === parseInt(mes) - 1 &&
-               fecha.getDate() === parseInt(dia);
-    }
+    return edad >= 18;
+}
     
     function esFechaVencimientoValida(fechaStr) {
         const regex = /^(\d{2})\/(\d{2})$/;
@@ -419,14 +447,14 @@ function llenarSelectPaises(listaPaises) {
                             paisValido && cantidadValida && tarjetaValida && vencimientoValido &&
                             cvvValido && nombreTarjetaValido;
         
-        // Actualizar mensaje de estado
+       
         if (todosValidos) {
             mensajeEstado.textContent = '✅ Todos los campos están correctos. ¡Puede enviar el formulario!';
             mensajeEstado.className = 'mensaje-estado exito';
             btnSubmit.disabled = false;
         } else {
             btnSubmit.disabled = true;
-            // Encontrar el primer campo inválido
+        
             const campos = [inputNombre, inputEmail, inputTelefono, inputFechaNac, selectPais, 
                            inputCantidad, inputTarjeta, inputVencimiento, inputCvv, inputNombreTarjeta];
             let mensaje = '❌ Complete y valide todos los campos correctamente.';
@@ -461,7 +489,7 @@ function llenarSelectPaises(listaPaises) {
     // 10. EVENT LISTENERS
     // =============================================
     
-    // Validación en tiempo real para cada campo
+  
     inputNombre.addEventListener('input', validarFormulario);
     inputEmail.addEventListener('input', validarFormulario);
     inputTelefono.addEventListener('input', validarFormulario);
@@ -470,7 +498,7 @@ function llenarSelectPaises(listaPaises) {
     selectTipoEntrada.addEventListener('change', validarFormulario);
     inputCantidad.addEventListener('input', validarFormulario);
     inputTarjeta.addEventListener('input', function() {
-        // Formatear con espacios cada 4 dígitos
+      
         let valor = this.value.replace(/\s/g, '');
         if (valor.length > 16) valor = valor.slice(0, 16);
         let formateado = '';
@@ -500,7 +528,7 @@ function llenarSelectPaises(listaPaises) {
     });
     inputNombreTarjeta.addEventListener('input', validarFormulario);
     
-    // Cambio de evento
+  
     selectEvento.addEventListener('change', function() {
         const index = parseInt(this.value);
         actualizarInfoEvento(index);
@@ -541,8 +569,11 @@ function llenarSelectPaises(listaPaises) {
                     <p style="margin-top: 1rem; font-size: 0.9rem; color: #6b7280;">
                         Se ha enviado un correo de confirmación a ${inputEmail.value}
                     </p>
-                    <button onclick="location.reload()" class="boton-accion" style="margin-top: 1rem;">
+                  <button onclick="location.reload()" class="boton-accion" style="margin-top: 1rem;">
                         <i class="fa-solid fa-rotate"></i> Nueva Compra
+                    </button>
+                    <button onclick="window.location.href='/TAP2/TAP2/index.html'" class="boton-accion" style="margin-top: 1rem; margin-left: 10px; background-color: var(--color-primario);">
+                        <i class="fa-solid fa-house"></i> Inicio
                     </button>
                 </div>
             `;
@@ -556,12 +587,12 @@ function llenarSelectPaises(listaPaises) {
     // 12. TEMPORIZADOR REGRESIVO
     // =============================================
     
-    let tiempoRestante = 300; // 5 minutos en segundos
+    let tiempoRestante = 600; // 10 minutos en segundos
     let intervaloContador = null;
     
     function iniciarContador() {
         if (intervaloContador) return;
-        tiempoRestante = 300;
+        tiempoRestante = 600;
         actualizarContador();
         
         intervaloContador = setInterval(() => {
@@ -624,10 +655,10 @@ function llenarSelectPaises(listaPaises) {
     cargarPaises();
     cargarEventos();
     
-    // Establecer fecha mínima de nacimiento (hace 18 años)
+    // Establecer fecha mínima (hace 18 años)
     const hoy = new Date();
     const fechaMin = new Date(hoy.getFullYear() - 18, hoy.getMonth(), hoy.getDate());
-    // No usamos input type date, usamos placeholder
+ 
     
     // Iniciar el contador cuando el usuario comienza a interactuar
     let contadorIniciado = false;
