@@ -369,3 +369,32 @@ html {
     object-fit: cover; /* Ajusta la imagen al contenedor de 150px sin deformarse */
     border-radius: 8px;
 }
+
+
+.layout-contacto-magico {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 3rem;
+    align-items: center; 
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.caja-texto-contacto {
+    flex: 1; 
+    min-width: 300px; 
+}
+
+.caja-mapa-contacto {
+    flex: 1.2; 
+    min-width: 300px;
+    width: 100%;
+}
+
+.caja-mapa-contacto iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}

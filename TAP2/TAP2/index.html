@@ -23,7 +23,10 @@
             <nav class="enlaces-menu">
                 <a href="#inicio" class="enlace-navegacion">Inicio</a>
                 <a href="#artistas" class="enlace-navegacion">Artistas</a>
-                <a href="#entradas" class="enlace-navegacion">Entradas</a>
+                <a href="cronograma.html" class="enlace-navegacion">Cronograma</a>
+                <a href="/TAP3/compra.html" class="enlace-navegacion" style="background-color: var(--color-acento); border-radius: 4px;">🎫 Comprar entradas</a>
+                <a href="#contacto" class="enlace-navegacion">Ubicación</a>
+                <a href="#contacto" class="enlace-navegacion">Contacto</a>
             </nav>
         </div>
     </header>
@@ -72,31 +75,66 @@
 
     </div>
 
-    <section id="entradas" class="seccion-formulario">
-        <div class="contenedor-formulario">
-            <h2 class="titulo-formulario">Reserva tu Lugar</h2>
-            <p class="descripcion-formulario">Completa los campos para recibir las novedades y accesos preferenciales.</p>
+   <!-- SECCIÓN DE ENTRADAS COMENTADA
+<section id="entradas" class="seccion-formulario">
+    <div class="contenedor-formulario">
+        <h2 class="titulo-formulario">Reserva tu Lugar</h2>
+        <p class="descripcion-formulario">Completa los campos para recibir las novedades y accesos preferenciales.</p>
+        
+        <form action="#" method="POST" class="formulario-registro">
+            <div class="campo-grupo">
+                <label for="nombre-completo">Nombre Completo:</label>
+                <input type="text" id="nombre-completo" name="nombre" placeholder="Ej: Jorgelina Campos" required>
+            </div>
             
-            <form action="#" method="POST" class="formulario-registro">
-                <div class="campo-grupo">
-                    <label for="nombre-completo">Nombre Completo:</label>
-                    <input type="text" id="nombre-completo" name="nombre" placeholder="Ej: Jorgelina Campos" required>
-                </div>
-                
-                <div class="campo-grupo">
-                    <label for="correo-electronico">Correo Electrónico:</label>
-                    <input type="email" id="correo-electronico" name="correo" placeholder="ejemplo@correo.com" required>
-                </div>
-                
-                <div class="campo-grupo">
-                    <label for="cantidad-tickets">Cantidad de Entradas:</label>
-                    <input type="number" id="cantidad-tickets" name="cantidad" min="1" max="4" value="1" required>
-                </div>
-                
-                <button type="submit" class="boton-enviar">Confirmar Reserva</button>
-            </form>
+            <div class="campo-grupo">
+                <label for="correo-electronico">Correo Electrónico:</label>
+                <input type="email" id="correo-electronico" name="correo" placeholder="ejemplo@correo.com" required>
+            </div>
+            
+            <div class="campo-grupo">
+                <label for="cantidad-tickets">Cantidad de Entradas:</label>
+                <input type="number" id="cantidad-tickets" name="cantidad" min="1" max="4" value="1" required>
+            </div>
+            
+            <button type="submit" class="boton-enviar">Confirmar Reserva</button>
+        </form>
+    </div>
+</section>
+-->
+
+<!-- CONTACTO -->
+<section id="contacto" class="seccion-formulario">
+    <div class="contenedor-principal" style="display: block; margin-top: 0;"> 
+        
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h2 class="titulo-seccion" style="border: none; margin-bottom: 0.5rem;">Contacto</h2>
+            <p class="descripcion-formulario" style="font-size: 1.1rem;">Encuéntranos en la Plaza de la Música o escríbenos para más información.</p>
         </div>
-    </section>
+
+        <div class="layout-contacto-magico">
+            
+            <div class="caja-texto-contacto">
+                <h3 style="color: var(--color-secundario); font-size: 1.5rem; margin-bottom: 1rem;">Plaza de la Música</h3>
+                <ul class="lista-detalles" style="padding: 0;">
+                    <li style="margin-bottom: 1rem;"><strong>Dirección:</strong> Int. Ramón Bautista Mestre 1128, X5000 Córdoba</li>
+                    <li style="margin-bottom: 1rem;"><strong>Email:</strong> info@plazadelamusica.com</li>
+                    <li style="margin-bottom: 1rem;"><strong>Teléfono:</strong> +54 351 000-0000</li>
+                </ul>
+            </div>
+            
+            <div class="caja-mapa-contacto">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3405.3400511675276!2d-64.20037802347204!3d-31.4047464956799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x943298818eddc0a1%3A0xcb1b72e9a263ba76!2sPlaza%20de%20la%20M%C3%BAsica!5e0!3m2!1ses-419!2sar!4v1714400000000!5m2!1ses-419!2sar" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            
+        </div>
+    </div>
+</section>
 
     <footer class="pie-pagina">
         <p>&copy; 2026 Sonidos de la Ciudad. Todos los derechos reservados.</p>
